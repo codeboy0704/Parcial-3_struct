@@ -1,1 +1,2 @@
 Creado por Héctor 
+Pendientes: 
