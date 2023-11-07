@@ -1,2 +1,2 @@
 Creado por Héctor 
-Pendientes: 
+Pendientes: funcion para entrada de datos del difunto // funcion para enviar facturas a los familiares de la familia
