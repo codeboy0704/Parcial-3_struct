@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define num_administrativos 10
-
-struct admin{
+struct admin
+{
 	char nom_admin[15];
 	char ape_admin[15];
 	char dir_admin[50];
@@ -14,27 +13,85 @@ struct admin{
 	char dNI_admin[15];
 };
 
-void administrativos(){
-	int n;
-	static struct admin lista[num_administrativos] = 	{"Hector", "Solis Gonzalez", "Jardines de manstranto", "---", "6220-5466", 3, 1250.50, "8-992-390", 
-									 					 "Ian", "Flores ", "Vista Alegre", "---", "----.----", 1, 1250.50, ".-....-...",};
-	/*printf("Inserte los datos\n");
-	scanf("%s",lista[3].nom_admin);
-	scanf("%s",lista[3].ape_admin);
-	scanf("%s",lista[3].dir_admin);
-	scanf("%s",lista[3].tel_admin);
-	scanf("%s",lista[3].telm_admin);
-	scanf("%d",&lista[3].ant_admin);
-	scanf("%f",&lista[3].pago_admin);
-	scanf("%s",lista[3].dNI_admin);*/
-	
-	/*printf("Inserte el numero de la lista\n");
-	scanf("%d",n);*/
-	
-	printf("\n%.2f",lista[0].pago_admin);
+void printSeparator()
+{
+	printf("--------------------------------------------------\n");
 }
 
-int main(){
+void ingresar_administradores(struct admin *lista, int cantidad)
+{
+	for (int i = 0; i < cantidad; i++)
+	{
+		printf("Ingrese el nombre del administrador %d: ", i + 1);
+		fgets(lista[i].nom_admin, sizeof(lista[i].nom_admin), stdin);
+		lista[i].nom_admin[strcspn(lista[i].nom_admin, "\n")] = '\0'; // Eliminar el salto de línea
+		printSeparator();
+		//////////////////////////
+		printf("Ingrese el apellido del administrador %d: ", i + 1);
+		fgets(lista[i].ape_admin, sizeof(lista[i].ape_admin), stdin);
+		lista[i].ape_admin[strcspn(lista[i].ape_admin, "\n")] = '\0'; // Eliminar el salto de línea
+		printSeparator();
+		////////////////////////////
+		printf("Ingrese la direccion del administrador %d: ", i + 1);
+		fgets(lista[i].dir_admin, sizeof(lista[i].dir_admin), stdin);
+		lista[i].dir_admin[strcspn(lista[i].dir_admin, "\n")] = '\0'; // Eliminar el salto de línea
+		printSeparator();
+		//////////////////////////
+		printf("Ingrese el telefono del administrador %d: ", i + 1);
+		fgets(lista[i].tel_admin, sizeof(lista[i].tel_admin), stdin);
+		lista[i].tel_admin[strcspn(lista[i].tel_admin, "\n")] = '\0'; // Eliminar el salto de línea
+		printSeparator();
+		//////////////////////////
+		printf("Ingrese el telefono movil del administrador %d: ", i + 1);
+		fgets(lista[i].telm_admin, sizeof(lista[i].telm_admin), stdin);
+		lista[i].telm_admin[strcspn(lista[i].telm_admin, "\n")] = '\0'; // Eliminar el salto de línea
+		printSeparator();
+		/////////////////////////
+		printf("Ingrese la antiguedad del administrador %d: ", i + 1);
+		scanf("%d", &lista[i].ant_admin);
+		printSeparator();
+		/////////////////////////
+		printf("Ingrese el pago del administrador %d: ", i + 1);
+		scanf("%f", &lista[i].pago_admin);
+		printSeparator();
+		/////////////////////////
+		printf("Ingrese el DNI del administrador %d: ", i + 1);
+		fgets(lista[i].dNI_admin, sizeof(lista[i].dNI_admin), stdin);
+		lista[i].dNI_admin[strcspn(lista[i].dNI_admin, "\n")] = '\0'; // Eliminar el salto de línea
+		printSeparator();
+	}
+}
+
+void mostrar_administradores(const struct admin *lista, int cantidad)
+{
+	printf("Administrativos:\n");
+	print("\n");
+	for (int i = 0; i < cantidad; i++)
+	{
+		printf("Administrador %d:\n", i + 1);
+		printf("Nombre: %s\n", lista[i].nom_admin);
+		printf("Apellido: %s\n", lista[i].ape_admin);
+		printf("Direccion: %s\n", lista[i].dir_admin);
+		printf("Telefono: %s\n", lista[i].tel_admin);
+		printf("Telefono movil: %s\n", lista[i].telm_admin);
+		printf("Antiguedad: %d\n", lista[i].ant_admin);
+		printf("Pago: %.2f\n", lista[i].pago_admin);
+		printf("DNI: %s\n", lista[i].dNI_admin);
+		printSeparator();
+		printSeparator();
+	}
+}
+
+void administrativos()
+{
+	// const int num_administrativos = 5;
+	static struct admin lista[1];
+	ingresar_administradores(lista, 1);
+	mostrar_administradores(lista, 1);
+}
+
+int main()
+{
 	administrativos();
 	return 0;
 }
