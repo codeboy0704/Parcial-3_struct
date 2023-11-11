@@ -65,7 +65,7 @@ void ingresar_administradores(struct admin *lista, int cantidad)
 void mostrar_administradores(const struct admin *lista, int cantidad)
 {
 	printf("Administrativos:\n");
-	print("\n");
+	printf("\n");
 	for (int i = 0; i < cantidad; i++)
 	{
 		printf("Administrador %d:\n", i + 1);
